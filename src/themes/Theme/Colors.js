@@ -23,7 +23,8 @@ export default {
   primarySec:'#E3BD3B',
   blackSec:'#34302F',
   // primary:'#E82583',
-
+  secondary: '#fdafe5e9',
+  secondary1: '#e418a7ff',
   success: '#28a745',
   error: '#dc3545',
   // label: "#0720C4",
@@ -46,7 +47,7 @@ export default {
   red: '#FC466B',
   blueTextColor: '#0AAAC1',
   blueHeadingColor: '#0AAAC1',
-  lightBg1: "#f0aad9",
+  lightBg1: "#f9a3dc",
   lightBg2: "#87a0f5",
   lightBg3: "#8fb870",
   lightBg4: "#b89b70",

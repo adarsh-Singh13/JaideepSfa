@@ -61,10 +61,10 @@ const authSlice = createSlice({
         userLoginOtpSuccess (state, action) {
             state.token = user.user_details.token__c;
             state.userId = user.user_details.sfid;
-            state.is_logged_in = HelperService.getCurrentTimestamp();
             state.userLoginOtpLoader = false;
             state.userLoginOtpErrorMessage = null;
             state.otp = initialState.otp;
+            state.is_logged_in = HelperService.getCurrentTimestamp();
         },
         userLoginOtpFailure (state,  action ) {
             state.userId = null;

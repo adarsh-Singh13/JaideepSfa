@@ -2,14 +2,14 @@ import React from 'react'
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
 
 const { width, height } = Dimensions.get('window')
-export default function BackGround({ children }) {
+export default function BackGround({ children, source }) {
     return (
         <View style={[styles.mainContainer, {
             width: width,
             height: height,
         }]}>
             <Image
-                source={require('../../assets/images/Moira2.jpg')}
+                source={source}
                 style={styles.imageBackground}
             />
             <View style={{ position: 'absolute' }}>

@@ -1454,6 +1454,33 @@ async function getAsyncColor() {
   return id;
 }
 
+
+async function requestSmsPermission() {
+    try {
+        if (Platform.OS === 'android') {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
+                {
+                    title: 'SMS Permission',
+                    message: 'This app needs access to your SMS messages to auto-read OTP.',
+                    buttonNeutral: 'Ask Me Later',
+                    buttonNegative: 'Cancel',
+                    buttonPositive: 'OK',
+                }
+            );
+
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log('SMS permission granted');
+            } else {
+                console.log('SMS permission denied');
+            }
+        }
+    } catch (err) {
+        console.warn(err);
+    }
+}
+
+
 export const HelperService = {
   findDayMessage,
   requestLocation,
@@ -1548,5 +1575,6 @@ export const HelperService = {
   getAsyncColor,
   convertToSearchableListBrand,
   requestMessagingPermission,
-  NotificationListner
+  NotificationListner,
+  requestSmsPermission,
 };
