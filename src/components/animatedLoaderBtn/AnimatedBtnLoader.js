@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 const AnimatedBtn = Animated.createAnimatedComponent(TouchableOpacity)
 
-export default function AnimatedBtnLoader  ({loader, onPress, userId, text, showIcon, iconName, iconSize, iconColor}) {
+export default function AnimatedBtnLoader  ({loader, onPress, userId = '', text, showIcon, iconName, iconSize, iconColor}) {
 
     const [btnClicked, setBtnClicked] = React.useState(false)
 

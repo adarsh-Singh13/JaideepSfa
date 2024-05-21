@@ -18,11 +18,10 @@ import { useNavigation } from '@react-navigation/native';
 
 export function LoginScreen() {
 
-  const otp = useSelector((state)=> state.auth.otp)
-  const userLoginLoader = useSelector((state) => state.auth.userLoginLoader)
-  const [userId, setUserId] = React.useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const [userId, setUserId] = React.useState('');
+  const userLoginLoader = useSelector((state) => state.auth.userLoginLoader)
 
  const loginPressHandler = () => {
   if (!userId) {
@@ -32,7 +31,11 @@ export function LoginScreen() {
       loginRequest({
         customerid: userId,
         type: 'SFA',
-      }, ()=>navigation.navigate("LoginOtp")
+      }, ()=> {
+        if (userLoginLoader == false) {        
+          navigation.navigate("LoginOtp")
+        } 
+      }
     ),
     )
   }
@@ -45,7 +48,9 @@ export function LoginScreen() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-    <BackGround>
+    <BackGround
+      source={require('../../assets/images/Moira2.jpg')}
+    >
       <View style={styles.container}>
         <Text style={styles.wlcmTxt}>Welcome back !</Text>
         <View style={styles.loginContainer}>
@@ -77,24 +82,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: 'auto',
-    height: '150%',
     marginRight: 70,
     marginTop: -75,
   },
   wlcmTxt: {
     fontWeight: '800',
     fontSize: 35,
-    marginLeft: '-20%',
     marginBottom: '6%',
     textTransform: 'uppercase',
     color: Colors.button,
   },
   loginContainer: {
-    width: '150%',
+    width: '115%',
     height: '100%',
     backgroundColor: '#ffd6f3e9',
-    padding: 20,
+    padding: 10,
     borderRadius: 10,
     shadowColor: '#463240',
     shadowOffset: {
